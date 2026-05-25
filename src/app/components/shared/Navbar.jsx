@@ -1,12 +1,21 @@
 import React from "react";
 import Logo from "./Logo";
+import Link from "next/link";
 
 const Navbar = () => {
   const nav = (
     <>
-      <li>Books</li>
-      <li>Results</li>
-      <li>Docs</li>
+      <ul className="flex gap-4">
+        <Link href={"/books"}>
+          <li>Books</li>
+        </Link>
+        <Link href={"/results"}>
+          <li>Results</li>
+        </Link>
+        <Link href={"/docs"}>
+          <li>Docs</li>
+        </Link>
+      </ul>
     </>
   );
 
@@ -55,13 +64,15 @@ const Navbar = () => {
             </li> */}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <Logo></Logo>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{nav}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <Link href={"/login"} className="btn bg-black rounded-4xl text-white">
+          Login
+        </Link>
       </div>
     </div>
   );
