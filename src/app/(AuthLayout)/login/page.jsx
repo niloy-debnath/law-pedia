@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import loginImg from "@/../public/login.png";
 import Link from "next/link";
+import { signIn } from "next-auth/react";
 
 const Login = () => {
   return (
@@ -65,7 +67,11 @@ const Login = () => {
                 </div>
 
                 {/* Submit Button */}
-                <button type="submit" className="btn btn-neutral w-full mt-6">
+                <button
+                  onClick={() => signIn()}
+                  type="submit"
+                  className="btn btn-neutral w-full mt-6"
+                >
                   Sign In
                 </button>
               </fieldset>
