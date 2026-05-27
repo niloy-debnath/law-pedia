@@ -4,8 +4,10 @@ import Image from "next/image";
 import registerImg from "@/../public/login.png";
 import Link from "next/link";
 import { postUser } from "@/actions/server/auth";
+import { useRouter } from "next/navigation";
 
 const Register = () => {
+  const router = useRouter();
   // 1. UPDATED HANDLER
   const handleRegister = (e) => {
     e.preventDefault(); // Prevents page reload
@@ -17,8 +19,9 @@ const Register = () => {
     const formValues = Object.fromEntries(formData.entries());
 
     // Log it to the console!
-    console.log("Form Submitted Data:", formData);
+    // console.log("Form Submitted Data:", formData);
     postUser(formValues);
+    router.push("/login");
   };
 
   return (
@@ -60,7 +63,7 @@ const Register = () => {
                   </label>
                   <input
                     type="text"
-                    name="fullName" // <-- ADDED NAME
+                    name="fullName"
                     className="input input-bordered w-full"
                     placeholder="John Doe"
                     required
