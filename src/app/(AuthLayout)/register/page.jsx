@@ -1,10 +1,26 @@
+"use client";
 import React from "react";
 import Image from "next/image";
-// Assuming you have a register illustration, otherwise you can reuse loginImg
 import registerImg from "@/../public/login.png";
 import Link from "next/link";
+import { postUser } from "@/actions/server/auth";
 
 const Register = () => {
+  // 1. UPDATED HANDLER
+  const handleRegister = (e) => {
+    e.preventDefault(); // Prevents page reload
+
+    // Create a FormData object from the target form
+    const formData = new FormData(e.target);
+
+    // Convert the form data into a clean JavaScript object
+    const formValues = Object.fromEntries(formData.entries());
+
+    // Log it to the console!
+    console.log("Form Submitted Data:", formData);
+    postUser(formValues);
+  };
+
   return (
     <div className="min-h-[85vh] w-full flex items-center justify-center ">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 w-full max-w-7xl items-center">
@@ -25,8 +41,8 @@ const Register = () => {
         {/* Left Side: Register Form Card */}
         <div className="w-full flex justify-center md:justify-end order-2 md:order-1">
           <div className="card bg-base-100 w-full max-w-md shadow-xl border border-base-200">
-            <form className="card-body gap-4">
-              {/* Header Text */}
+            {/* 2. REMEMBER THE EVENT PASSED HERE */}
+            <form className="card-body gap-4" onSubmit={handleRegister}>
               <div>
                 <h2 className="card-title text-2xl font-bold tracking-tight">
                   Create an Account
@@ -36,7 +52,6 @@ const Register = () => {
                 </p>
               </div>
 
-              {/* Form Fields */}
               <fieldset className="fieldset gap-2 p-0">
                 {/* Name Field */}
                 <div className="form-control w-full">
@@ -45,6 +60,7 @@ const Register = () => {
                   </label>
                   <input
                     type="text"
+                    name="fullName" // <-- ADDED NAME
                     className="input input-bordered w-full"
                     placeholder="John Doe"
                     required
@@ -58,6 +74,7 @@ const Register = () => {
                   </label>
                   <input
                     type="email"
+                    name="email" // <-- ADDED NAME
                     className="input input-bordered w-full"
                     placeholder="name@company.com"
                     required
@@ -71,6 +88,7 @@ const Register = () => {
                   </label>
                   <input
                     type="password"
+                    name="password" // <-- ADDED NAME
                     className="input input-bordered w-full"
                     placeholder="••••••••"
                     required
@@ -82,6 +100,7 @@ const Register = () => {
                   <label className="label cursor-pointer gap-2 p-0">
                     <input
                       type="checkbox"
+                      name="agreeToTerms" // <-- ADDED NAME (will show "on" if checked)
                       className="checkbox checkbox-xs rounded"
                       required
                     />
