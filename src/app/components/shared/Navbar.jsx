@@ -4,9 +4,12 @@ import React from "react";
 import Logo from "./Logo";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
-  const pathname = usePathname(); // Fixed the typo here ("pathame" -> "pathname")
+  const { data: session, status } = useSession();
+
+  const pathname = usePathname();
 
   // 1. Define your navigation links in an array
   const links = [
@@ -26,7 +29,7 @@ const Navbar = () => {
             href={link.href}
             className={
               isActive
-                ? " font-bold border-b-3  border-amber-300 rounded-b-sm"
+                ? " font-bold border-b-3  border-amber-300 "
                 : "text-gray-600 hover:text-gray-900"
             }
           >
@@ -67,15 +70,32 @@ const Navbar = () => {
         <Logo />
       </div>
 
-      {/* The desktop view also uses the clean mapped links automatically */}
       <div className="navbar-center hidden lg:flex">
         <div className="px-1">{nav}</div>
       </div>
 
-      <div className="navbar-end">
-        <Link href={"/login"} className="btn bg-black rounded-4xl text-white">
-          Login
-        </Link>
+      <div className="navbar-end flex gap-4">
+        <div className="flex items-center gap-2 bg-amber-300 px-3 py-1 rounded-4xl">
+          <div className="bg-green-500 rounded-full w-2 h-2"></div>
+          <h2>{session?.user?.name}</h2>
+        </div>
+        <div>
+          {session?.user ? (
+            <button
+              onClick={() => signOut()} // Replace with your actual signOut() function
+              className="btn bg-red-600 hover:bg-red-700 rounded-4xl text-white"
+            >
+              Logout
+            </button>
+          ) : (
+            <Link
+              href={"/login"}
+              className="btn bg-black rounded-4xl text-white"
+            >
+              Login
+            </Link>
+          )}
+        </div>
       </div>
     </div>
   );
