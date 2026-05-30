@@ -1,22 +1,40 @@
+"use client"; // Make sure this is at the very top of your file since you use usePathname()
+
 import React from "react";
 import Logo from "./Logo";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
+  const pathname = usePathname(); // Fixed the typo here ("pathame" -> "pathname")
+
+  // 1. Define your navigation links in an array
+  const links = [
+    { label: "Books", href: "/books" },
+    { label: "Results", href: "/results" },
+    { label: "Docs", href: "/docs" },
+  ];
+
   const nav = (
-    <>
-      <ul className="flex gap-4">
-        <Link href={"/books"}>
-          <li>Books</li>
-        </Link>
-        <Link href={"/results"}>
-          <li>Results</li>
-        </Link>
-        <Link href={"/docs"}>
-          <li>Docs</li>
-        </Link>
-      </ul>
-    </>
+    <ul className="flex gap-4">
+      {links.map((link) => {
+        const isActive = pathname === link.href;
+
+        return (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={
+              isActive
+                ? " font-bold border-b-3  border-amber-300 rounded-b-sm"
+                : "text-gray-600 hover:text-gray-900"
+            }
+          >
+            <li>{link.label}</li>
+          </Link>
+        );
+      })}
+    </ul>
   );
 
   return (
@@ -31,44 +49,29 @@ const Navbar = () => {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              {" "}
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
                 d="M4 6h16M4 12h8m-8 6h16"
-              />{" "}
+              />
             </svg>
           </div>
           <ul
-            tabIndex="-1"
+            tabIndex={-1}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             {nav}
-            {/* <li>
-              <a>Item 100</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li> */}
           </ul>
         </div>
-        <Logo></Logo>
+        <Logo />
       </div>
+
+      {/* The desktop view also uses the clean mapped links automatically */}
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{nav}</ul>
+        <div className="px-1">{nav}</div>
       </div>
+
       <div className="navbar-end">
         <Link href={"/login"} className="btn bg-black rounded-4xl text-white">
           Login
