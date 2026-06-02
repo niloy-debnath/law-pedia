@@ -41,7 +41,12 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-secondary text-white shadow-sm">
+    <div
+      data-aos="fade-down"
+      data-aos-easing="linear"
+      data-aos-duration="500"
+      className="navbar bg-secondary text-white shadow-sm"
+    >
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

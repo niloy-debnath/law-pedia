@@ -6,7 +6,7 @@ import Logo from "../components/shared/Logo";
 const layout = ({ children }) => {
   return (
     <div className="max-w-7xl mx-auto w-full mt-2">
-      <Logo></Logo>
+      <Logo className="invert"></Logo>
       {children}
     </div>
   );

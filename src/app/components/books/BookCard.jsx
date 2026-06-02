@@ -7,6 +7,7 @@ const BookCard = ({ book, index }) => {
   return (
     <div>
       <div
+        data-aos={!isEvenCard ? "fade-right" : "fade-left"}
         className={`card lg:card-side bg-base-100 shadow-sm mt-8 border border-base-200 overflow-hidden ${
           !isEvenCard ? "lg:flex-row-reverse" : ""
         }`}
