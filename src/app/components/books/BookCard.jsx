@@ -16,7 +16,7 @@ const BookCard = ({ book, index }) => {
           <img
             src={book.image}
             alt={book.title}
-            className="w-full h-48 lg:h-full object-cover"
+            className="w-full h-48 lg:h-full object-cover hover:scale-105"
           />
         </figure>
 
@@ -25,8 +25,10 @@ const BookCard = ({ book, index }) => {
           <h2 className="card-title text-xl font-bold">{book.title}</h2>
           <p className="font-medium text-primary text-sm">{book.author}</p>
           <p className="text-gray-700 text-sm">{book.description}</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">
+          <div
+            className={`card-actions justify-end ${!isEvenCard ? "justify-start" : ""}`}
+          >
+            <button className="btn btn-primary bg-primary text-black border-none hover:scale-105 hover:bg-secondary hover:text-white">
               {book.buttonText || "Listen"}
             </button>
           </div>

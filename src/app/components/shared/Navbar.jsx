@@ -30,7 +30,7 @@ const Navbar = () => {
             className={
               isActive
                 ? " font-bold border-b-3  border-amber-300 "
-                : "text-gray-600 hover:text-gray-900"
+                : "text-white hover:text-primary"
             }
           >
             <li>{link.label}</li>
@@ -41,7 +41,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-secondary text-white shadow-sm">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -62,7 +62,7 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={-1}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow text-white"
           >
             {nav}
           </ul>
@@ -70,7 +70,7 @@ const Navbar = () => {
         <Logo />
       </div>
 
-      <div className="navbar-center hidden lg:flex">
+      <div className="navbar-center hidden lg:flex text-white">
         <div className="px-1">{nav}</div>
       </div>
 
@@ -90,7 +90,7 @@ const Navbar = () => {
           ) : (
             <Link
               href={"/login"}
-              className="btn bg-black rounded-4xl text-white"
+              className="btn bg-primary rounded-4xl text-black hover:scale-105"
             >
               Login
             </Link>

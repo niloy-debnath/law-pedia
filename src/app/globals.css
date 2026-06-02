@@ -2,22 +2,111 @@
 @plugin "daisyui";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* --- Base CSS Variables (Light Theme) --- */
+  --background: #efeff5; /* dusty-grape-50 */
+  --foreground: #14141f; /* pale-slate-900 */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* daisyUI & Semantic Theme Mapping */
+  --primary: #ffaa00; /* sunflower-gold-500 */
+  --primary-content: #241800; /* sunflower-gold-950 */
+
+  --secondary: #65659a; /* pale-slate-500 */
+  --secondary-content: #f0f0f5; /* pale-slate-50 */
+
+  --accent: #ffff00; /* porcelain-500 (Pure yellow) */
+  --neutral: #3c3c5d; /* pale-slate-700 */
+  --error: #ff3333; /* grapefruit-pink-400 */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* --- Base CSS Variables (Dark Theme) --- */
+    --background: #0e0e16; /* pale-slate-950 */
+    --foreground: #efeff5; /* dusty-grape-50 */
+
+    --primary: #ffbb33; /* sunflower-gold-400 (Slightly brighter for dark mode) */
+    --neutral: #28283e; /* pale-slate-800 */
   }
+}
+
+@theme inline {
+  /* --- Tailwind v4 Color Registration --- */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-content: var(--primary-content);
+  --color-secondary: var(--secondary);
+  --color-secondary-content: var(--secondary-content);
+  --color-accent: var(--accent);
+  --color-neutral: var(--neutral);
+  --color-error: var(--error);
+
+  /* --- Full Custom Palette Utilities --- */
+  /* This gives you utility classes like `bg-pale-slate-500` or `text-sunflower-gold-300` */
+  --color-pale-slate-50: #f0f0f5;
+  --color-pale-slate-100: #e0e0eb;
+  --color-pale-slate-200: #c1c1d7;
+  --color-pale-slate-300: #a2a2c3;
+  --color-pale-slate-400: #8484ae;
+  --color-pale-slate-500: #65659a;
+  --color-pale-slate-600: #51517b;
+  --color-pale-slate-700: #3c3c5d;
+  --color-pale-slate-800: #28283e;
+  --color-pale-slate-900: #14141f;
+  --color-pale-slate-950: #0e0e16;
+
+  --color-dusty-grape-50: #efeff5;
+  --color-dusty-grape-100: #dfe0ec;
+  --color-dusty-grape-200: #bfc1d9;
+  --color-dusty-grape-300: #9fa2c6;
+  --color-dusty-grape-400: #8083b3;
+  --color-dusty-grape-500: #60649f;
+  --color-dusty-grape-600: #4d5080;
+  --color-dusty-grape-700: #393c60;
+  --color-dusty-grape-800: #262840;
+  --color-dusty-grape-900: #131420;
+  --color-dusty-grape-950: #0d0e16;
+
+  --color-sunflower-gold-50: #fff7e5;
+  --color-sunflower-gold-100: #ffeecc;
+  --color-sunflower-gold-200: #ffdd99;
+  --color-sunflower-gold-300: #ffcc66;
+  --color-sunflower-gold-400: #ffbb33;
+  --color-sunflower-gold-500: #ffaa00;
+  --color-sunflower-gold-600: #cc8800;
+  --color-sunflower-gold-700: #996600;
+  --color-sunflower-gold-800: #664400;
+  --color-sunflower-gold-900: #332200;
+  --color-sunflower-gold-950: #241800;
+
+  --color-porcelain-50: #ffffe5;
+  --color-porcelain-100: #ffffcc;
+  --color-porcelain-200: #ffff99;
+  --color-porcelain-300: #ffff66;
+  --color-porcelain-400: #ffff33;
+  --color-porcelain-500: #ffff00;
+  --color-porcelain-600: #cccc00;
+  --color-porcelain-700: #999900;
+  --color-porcelain-800: #666600;
+  --color-porcelain-900: #333300;
+  --color-porcelain-950: #242400;
+
+  --color-grapefruit-pink-50: #ffe5e5;
+  --color-grapefruit-pink-100: #ffcccc;
+  --color-grapefruit-pink-200: #ff9999;
+  --color-grapefruit-pink-300: #ff6666;
+  --color-grapefruit-pink-400: #ff3333;
+  --color-grapefruit-pink-500: #ff0000;
+  --color-grapefruit-pink-600: #cc0000;
+  --color-grapefruit-pink-700: #990000;
+  --color-grapefruit-pink-800: #660000;
+  --color-grapefruit-pink-900: #330000;
+  --color-grapefruit-pink-950: #240000;
+
+  /* Fonts */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 body {

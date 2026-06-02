@@ -6,9 +6,9 @@ import Link from "next/link";
 const Logo = () => {
   return (
     <Link href={"/"}>
-      <div className="flex items-center">
+      <div className="flex items-center invert">
         <Image src={logo} alt="Law-Pedia-Logo" width={50} height={50}></Image>
-        <h2 className="font-bold text-xl">Law Pedia</h2>
+        <h2 className="font-bold text-xl text-black">Law Pedia</h2>
       </div>
     </Link>
   );
